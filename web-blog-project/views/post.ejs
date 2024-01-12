@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs") %>
+
+<% if(!locals.post) { %>
+<form action="/add" method="POST" class="m-3">
+    <div class="mb-3">
+        <label for="titleFormControl" class="form-label">Title</label>
+        <input type="text" class="form-control" id="titleFormControl" name="title">
+    </div>
+    <div class="mb-3">
+        <label for="contentFormControl" class="form-label">Content</label>
+        <textarea class="form-control" id="contentFormControl" rows="3" name="content"></textarea>
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="Add post">
+    </div>
+</form>
+<% } else { %>
+    <form action="/update/<%= post.id %>" method="POST" class="m-3">
+        <div class="mb-3">
+            <label for="titleFormControl" class="form-label">Title</label>
+            <input type="text" class="form-control" id="titleFormControl" name="title" value="<%= post.title %>">
+        </div>
+        <div class="mb-3">
+            <label for="contentFormControl" class="form-label">Content</label>
+            <textarea class="form-control" id="contentFormControl" rows="3" name="content"><%= post.content %></textarea>
+        </div>
+        <div class="mb-3">
+            <input type="submit" value="Update post">
+        </div>
+    </form>
+<% } %>
+
+<%- include("partials/footer.ejs") %>

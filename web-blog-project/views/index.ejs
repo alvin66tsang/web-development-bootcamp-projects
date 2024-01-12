@@ -1,0 +1,11 @@
+<%- include("partials/header.ejs") %>
+
+<% if(locals.posts) { %>
+    <% posts.forEach((post) => { %>
+        <%- include("partials/post.ejs", { post: post }) %>
+    <% }) %>
+<% } else { %>
+    <h5 class="m-3">No post yet. Add a new post.</h5>
+<% } %>
+
+<%- include("partials/footer.ejs") %>
